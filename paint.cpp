@@ -74,7 +74,7 @@ void Paint::sendingDate(QString coordinate, QColor brushColor, qint32 brushSize)
     QByteArray sendData;
     QString s = brushColor.name() + "|" + QString::number(brushSize) + "|" + coordinate;
     sendData.append(s);
-    udpSocket->writeDatagram(sendData, QHostAddress("192.168.19.227"), 7777);
+    udpSocket->writeDatagram(sendData, QHostAddress::LocalHost, 7777);
     sendData.clear();
 }
 

@@ -7,9 +7,6 @@
 PaintScene::PaintScene(QObject *parent) : QGraphicsScene(parent)
 {
     QList<QPointF> coordinateArray;
-
-    QList<QPointF> coordinateArrayCursor;
-
     group_1 = new QGraphicsItemGroup();
 }
 
@@ -19,9 +16,10 @@ PaintScene::~PaintScene()
 }
 
 
+// Отрисовка полученных координат
 void PaintScene::drawFromOnline(QString setCoordinate, QColor brushColor, qint32 brushSize)
 {
-
+    // Проверка
     if(setCoordinate.length() <= 10)
     {
         QPointF coordinate;
@@ -30,8 +28,8 @@ void PaintScene::drawFromOnline(QString setCoordinate, QColor brushColor, qint32
         coordinate.setY(setCoordinate.left(setCoordinate.indexOf("|")).toInt());
         setCoordinate.clear();
 
-        addEllipse((coordinate.x() + 50) - brushSize/2,
-                   (coordinate.y() + 50) - brushSize/2,
+        addEllipse(coordinate.x() - brushSize/2,
+                   coordinate.y() - brushSize/2,
                    brushSize,
                    brushSize,
                    QPen(Qt::NoPen),
@@ -39,7 +37,7 @@ void PaintScene::drawFromOnline(QString setCoordinate, QColor brushColor, qint32
         previousPointOnline = coordinate;
     }
 
-    if(setCoordinate.length() > 15)
+    if(setCoordinate.length() > 10)
     {
         while(setCoordinate.length() > 1)
         {
@@ -60,18 +58,21 @@ void PaintScene::drawFromOnline(QString setCoordinate, QColor brushColor, qint32
             }
             while(coordinateArray.length() != 0)
             {
-                QPointF tempest = coordinateArray.takeFirst();
-                addLine(previousPointOnline.x()+50,
-                        previousPointOnline.y()+50,
-                        tempest.x()+50,
-                        tempest.y()+50,
+                QPointF nextPoint = coordinateArray.takeFirst();
+                addLine(previousPointOnline.x(),
+                        previousPointOnline.y(),
+                        nextPoint.x(),
+                        nextPoint.y(),
                         QPen(brushColor, brushSize, Qt::SolidLine, Qt::RoundCap));
-                previousPointOnline = tempest;
+                previousPointOnline = nextPoint;
             }
+            coordinateArray.clear();
     }
     previousPointOnline = QPointF(0.0, 0.0);
 }
 
+
+// Отрисовка второго слоя
 void PaintScene::sceneTrans(PaintScene *scene)
 {
     tempscene = scene;
@@ -96,34 +97,30 @@ void PaintScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void PaintScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    qDebug() << event->scenePos();
-    i++;
+    //qDebug() << event->scenePos();
     group_1->hide();
     group_1 = new QGraphicsItemGroup();
     tempscene->addItem(group_1);
-    i = 0;
     group_1->addToGroup(tempscene->addEllipse(event->scenePos().x() - changedBrush/2,
-                                                         event->scenePos().y() - changedBrush/2,
-                                                         changedBrush,
-                                                         changedBrush,
+                                              event->scenePos().y() - changedBrush/2,
+                                              changedBrush,
+                                              changedBrush,
                                               QPen(Qt::NoPen),
                                               QBrush(changedColor)));
 
 
     if( event->buttons() == Qt::LeftButton )
     {
-    // Отрисовываем линии с использованием предыдущей координаты
-    addLine(previousPoint.x(),
-            previousPoint.y(),
-            event->scenePos().x(),
-            event->scenePos().y(),
-            QPen(changedColor,changedBrush,Qt::SolidLine,Qt::RoundCap));
-    // Обновляем данные о предыдущей координате
-    previousPoint = event->scenePos();
-    // Передача данных
-//    drawLineArray << previousPoint;
-//    QPointF temp = drawLineArray.takeFirst();
-    transferData += QString::number(previousPoint.x()) + "|" + QString::number(previousPoint.y()) + "|";
+        // Отрисовываем линии с использованием предыдущей координаты
+        addLine(previousPoint.x(),
+                previousPoint.y(),
+                event->scenePos().x(),
+                event->scenePos().y(),
+                QPen(changedColor,changedBrush,Qt::SolidLine,Qt::RoundCap));
+        // Обновляем данные о предыдущей координате
+        previousPoint = event->scenePos();
+        // Передача данных
+        transferData += QString::number(previousPoint.x()) + "|" + QString::number(previousPoint.y()) + "|";
     }
 }
 
@@ -147,11 +144,14 @@ void PaintScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     }
 }
 
+// Смена цвета
 void PaintScene::slotColor(QColor a)
 {
     changedColor = a;
 }
 
+
+// Смена размера кисти
 void PaintScene::slotBrush(qint32 a)
 {
     changedBrush = a;

@@ -26,7 +26,6 @@ private:
     QString transferData;
     QPointF tempPaint;
     QString sendButtonPress;
-    qint8 i;
     QGraphicsItemGroup  *group_1;
     PaintScene *tempscene;
 
