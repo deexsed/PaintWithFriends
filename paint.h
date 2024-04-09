@@ -40,6 +40,7 @@ private slots:
     void on_pushButton_clicked();
     void on_horizontalSlider_valueChanged(qint32 value);
     void readingData();
+    void on_clearButton_clicked();
 };
 
 #endif // PAINT_H

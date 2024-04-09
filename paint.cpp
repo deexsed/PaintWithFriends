@@ -37,6 +37,23 @@ void Paint::on_pushButton_clicked()
     emit signalColor(color);
 }
 
+void Paint::on_clearButton_clicked()
+{
+    //scene->setBackgroundBrush(QBrush(Qt::black, Qt::SolidPattern));
+
+    // Тестовый метод очистки
+    QSize clearLayer = ui->graphicsView->maximumSize();
+    scene->addLine(clearLayer.width(),
+                   clearLayer.height(),
+                   -clearLayer.width(),
+                   -clearLayer.width(),
+                   QPen(Qt::white,8000,Qt::SolidLine,Qt::RoundCap));
+
+//    QByteArray sendData;
+//    sendData.append("clearLayer");
+//    udpSocket->writeDatagram(sendData, QHostAddress::LocalHost, 7777);
+//    sendData.clear();
+}
 
 void Paint::on_horizontalSlider_valueChanged(qint32 brushSize)
 {
@@ -54,6 +71,13 @@ void Paint::readingData()
         QHostAddress senderIP;
         quint16 senderPort;
         udpSocket->readDatagram(datagram.data(), datagram.size(), &senderIP, &senderPort);
+
+        // Тестовый метод очистки
+//        if(datagram == "clearLayer")
+//        {
+//            qDebug() <<  datagram;
+//            on_clearButton_clicked();
+//        }
 
         QColor setColor = QString(datagram.left(datagram.indexOf("|")));
         datagram.remove(0, datagram.indexOf("|") + 1);

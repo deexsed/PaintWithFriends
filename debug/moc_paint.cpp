@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Paint_t {
-    QByteArrayData data[12];
-    char stringdata0[145];
+    QByteArrayData data[13];
+    char stringdata0[168];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,14 +40,15 @@ QT_MOC_LITERAL(7, 66, 5), // "scene"
 QT_MOC_LITERAL(8, 72, 21), // "on_pushButton_clicked"
 QT_MOC_LITERAL(9, 94, 32), // "on_horizontalSlider_valueChanged"
 QT_MOC_LITERAL(10, 127, 5), // "value"
-QT_MOC_LITERAL(11, 133, 11) // "readingData"
+QT_MOC_LITERAL(11, 133, 11), // "readingData"
+QT_MOC_LITERAL(12, 145, 22) // "on_clearButton_clicked"
 
     },
     "Paint\0signalColor\0\0signalBrush\0"
     "signalInfo\0signalTrans\0PaintScene*\0"
     "scene\0on_pushButton_clicked\0"
     "on_horizontalSlider_valueChanged\0value\0"
-    "readingData"
+    "readingData\0on_clearButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,7 +58,7 @@ static const uint qt_meta_data_Paint[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -65,15 +66,16 @@ static const uint qt_meta_data_Paint[] = {
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   49,    2, 0x06 /* Public */,
-       3,    1,   52,    2, 0x06 /* Public */,
-       4,    3,   55,    2, 0x06 /* Public */,
-       5,    1,   62,    2, 0x06 /* Public */,
+       1,    1,   54,    2, 0x06 /* Public */,
+       3,    1,   57,    2, 0x06 /* Public */,
+       4,    3,   60,    2, 0x06 /* Public */,
+       5,    1,   67,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       8,    0,   65,    2, 0x08 /* Private */,
-       9,    1,   66,    2, 0x08 /* Private */,
-      11,    0,   69,    2, 0x08 /* Private */,
+       8,    0,   70,    2, 0x08 /* Private */,
+       9,    1,   71,    2, 0x08 /* Private */,
+      11,    0,   74,    2, 0x08 /* Private */,
+      12,    0,   75,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QColor,    2,
@@ -84,6 +86,7 @@ static const uint qt_meta_data_Paint[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -102,6 +105,7 @@ void Paint::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 4: _t->on_pushButton_clicked(); break;
         case 5: _t->on_horizontalSlider_valueChanged((*reinterpret_cast< qint32(*)>(_a[1]))); break;
         case 6: _t->readingData(); break;
+        case 7: _t->on_clearButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -170,13 +174,13 @@ int Paint::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

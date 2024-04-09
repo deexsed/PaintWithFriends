@@ -36,15 +36,18 @@ public:
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_2;
     QLabel *label;
+    QPushButton *clearButton;
+    QSpacerItem *horizontalSpacer;
     QSpacerItem *verticalSpacer;
 
     void setupUi(QWidget *Paint)
     {
         if (Paint->objectName().isEmpty())
             Paint->setObjectName(QStringLiteral("Paint"));
+        Paint->setEnabled(true);
         Paint->resize(1000, 600);
         Paint->setMinimumSize(QSize(1000, 600));
-        Paint->setMaximumSize(QSize(1920, 1080));
+        Paint->setMaximumSize(QSize(16777215, 16777215));
         Paint->setBaseSize(QSize(1000, 600));
         Paint->setMouseTracking(true);
         horizontalLayout = new QHBoxLayout(Paint);
@@ -53,7 +56,7 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         graphicsView = new QGraphicsView(Paint);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setMinimumSize(QSize(800, 580));
+        graphicsView->setMinimumSize(QSize(800, 570));
         graphicsView->setMaximumSize(QSize(2360, 1440));
         graphicsView->viewport()->setProperty("cursor", QVariant(QCursor(Qt::BlankCursor)));
         graphicsView->setMouseTracking(true);
@@ -113,6 +116,17 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_5);
 
+        clearButton = new QPushButton(Paint);
+        clearButton->setObjectName(QStringLiteral("clearButton"));
+        clearButton->setMinimumSize(QSize(0, 30));
+        clearButton->setBaseSize(QSize(0, 30));
+
+        verticalLayout->addWidget(clearButton);
+
+        horizontalSpacer = new QSpacerItem(110, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        verticalLayout->addItem(horizontalSpacer);
+
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
@@ -132,6 +146,7 @@ public:
         pushButton->setText(QApplication::translate("Paint", "\320\237\320\260\320\273\320\270\321\202\321\200\320\270\321\203\321\201", 0));
         label_2->setText(QApplication::translate("Paint", "\320\240\320\260\321\205\320\274\320\265\321\200 \320\272\320\270\321\201\321\202\320\270 : ", 0));
         label->setText(QApplication::translate("Paint", "10", 0));
+        clearButton->setText(QApplication::translate("Paint", "\320\236\321\207\320\270\321\201\321\202\320\270\321\202\321\214", 0));
     } // retranslateUi
 
 };

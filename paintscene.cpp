@@ -97,16 +97,14 @@ void PaintScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void PaintScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    //qDebug() << event->scenePos();
+    qDebug() << event->scenePos();
     group_1->hide();
     group_1 = new QGraphicsItemGroup();
     tempscene->addItem(group_1);
     group_1->addToGroup(tempscene->addEllipse(event->scenePos().x() - changedBrush/2,
                                               event->scenePos().y() - changedBrush/2,
                                               changedBrush,
-                                              changedBrush,
-                                              QPen(Qt::NoPen),
-                                              QBrush(changedColor)));
+                                              changedBrush));
 
 
     if( event->buttons() == Qt::LeftButton )
