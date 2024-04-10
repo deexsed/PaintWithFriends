@@ -109,7 +109,7 @@
         <enum>Qt::LeftToRight</enum>
        </property>
        <property name="text">
-        <string>Палитриус</string>
+        <string>Палитра</string>
        </property>
       </widget>
      </item>
@@ -166,7 +166,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="clearButton">
+      <widget class="QPushButton" name="backGroundButton">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -180,7 +180,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Очистить</string>
+        <string>Цвет Фона</string>
        </property>
       </widget>
      </item>

@@ -7,6 +7,7 @@
 #include <QUdpSocket>
 #include <QHostAddress>
 #include <paintscene.h>
+#include <QColorDialog>
 
 namespace Ui {
 class Paint;
@@ -29,6 +30,9 @@ private:
     Ui::Paint *ui;
     QUdpSocket *udpSocket;
     void mouseMoveEvent(QGraphicsSceneMouseEvent *e);
+    QColor color;
+    QColor backgroundColor;
+    QColorDialog *colorDialog;
 
 signals:
     void signalColor(QColor);
@@ -40,7 +44,7 @@ private slots:
     void on_pushButton_clicked();
     void on_horizontalSlider_valueChanged(qint32 value);
     void readingData();
-    void on_clearButton_clicked();
+    void on_backGroundButton_clicked();
 };
 
 #endif // PAINT_H

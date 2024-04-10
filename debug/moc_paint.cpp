@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Paint_t {
     QByteArrayData data[13];
-    char stringdata0[168];
+    char stringdata0[173];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,14 +41,14 @@ QT_MOC_LITERAL(8, 72, 21), // "on_pushButton_clicked"
 QT_MOC_LITERAL(9, 94, 32), // "on_horizontalSlider_valueChanged"
 QT_MOC_LITERAL(10, 127, 5), // "value"
 QT_MOC_LITERAL(11, 133, 11), // "readingData"
-QT_MOC_LITERAL(12, 145, 22) // "on_clearButton_clicked"
+QT_MOC_LITERAL(12, 145, 27) // "on_backGroundButton_clicked"
 
     },
     "Paint\0signalColor\0\0signalBrush\0"
     "signalInfo\0signalTrans\0PaintScene*\0"
     "scene\0on_pushButton_clicked\0"
     "on_horizontalSlider_valueChanged\0value\0"
-    "readingData\0on_clearButton_clicked"
+    "readingData\0on_backGroundButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -105,7 +105,7 @@ void Paint::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 4: _t->on_pushButton_clicked(); break;
         case 5: _t->on_horizontalSlider_valueChanged((*reinterpret_cast< qint32(*)>(_a[1]))); break;
         case 6: _t->readingData(); break;
-        case 7: _t->on_clearButton_clicked(); break;
+        case 7: _t->on_backGroundButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {

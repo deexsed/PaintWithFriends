@@ -36,7 +36,7 @@ public:
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_2;
     QLabel *label;
-    QPushButton *clearButton;
+    QPushButton *backGroundButton;
     QSpacerItem *horizontalSpacer;
     QSpacerItem *verticalSpacer;
 
@@ -116,12 +116,12 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_5);
 
-        clearButton = new QPushButton(Paint);
-        clearButton->setObjectName(QStringLiteral("clearButton"));
-        clearButton->setMinimumSize(QSize(0, 30));
-        clearButton->setBaseSize(QSize(0, 30));
+        backGroundButton = new QPushButton(Paint);
+        backGroundButton->setObjectName(QStringLiteral("backGroundButton"));
+        backGroundButton->setMinimumSize(QSize(0, 30));
+        backGroundButton->setBaseSize(QSize(0, 30));
 
-        verticalLayout->addWidget(clearButton);
+        verticalLayout->addWidget(backGroundButton);
 
         horizontalSpacer = new QSpacerItem(110, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
@@ -143,10 +143,10 @@ public:
     void retranslateUi(QWidget *Paint)
     {
         Paint->setWindowTitle(QApplication::translate("Paint", "Paint", 0));
-        pushButton->setText(QApplication::translate("Paint", "\320\237\320\260\320\273\320\270\321\202\321\200\320\270\321\203\321\201", 0));
+        pushButton->setText(QApplication::translate("Paint", "\320\237\320\260\320\273\320\270\321\202\321\200\320\260", 0));
         label_2->setText(QApplication::translate("Paint", "\320\240\320\260\321\205\320\274\320\265\321\200 \320\272\320\270\321\201\321\202\320\270 : ", 0));
         label->setText(QApplication::translate("Paint", "10", 0));
-        clearButton->setText(QApplication::translate("Paint", "\320\236\321\207\320\270\321\201\321\202\320\270\321\202\321\214", 0));
+        backGroundButton->setText(QApplication::translate("Paint", "\320\246\320\262\320\265\321\202 \320\244\320\276\320\275\320\260", 0));
     } // retranslateUi
 
 };
