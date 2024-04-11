@@ -22,9 +22,10 @@ public:
     ~Paint();
     PaintScene *scene;  // Объявляем кастомную графическую сцену
     qint32 brushSize;
-
-    void sendingDate(QString coordinate, QColor brushColor, qint32 brushSize);
+    bool isRecived;
+    void sendingDate(QString coordinate, QColor brushColor, qint32 brushSize, bool isRecived);
     void getPaintStatus(bool isPaintDone);
+
 
 private:
     Ui::Paint *ui;

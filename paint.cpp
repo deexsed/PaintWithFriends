@@ -129,8 +129,9 @@ void Paint::readingData()
 }
 
 
-void Paint::sendingDate(QString coordinate, QColor brushColor, qint32 brushSize, isRecived)
+void Paint::sendingDate(QString coordinate, QColor brushColor, qint32 brushSize, bool isRecived)
 {
+    qDebug() << !isRecived;
     while(!isRecived)
     {
         QByteArray sendData;
