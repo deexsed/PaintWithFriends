@@ -33,7 +33,6 @@ private:
     QColor color;
     QColor backgroundColor;
     QColorDialog *colorDialog;
-    bool isRecieved;
 
 signals:
     void signalColor(QColor);
