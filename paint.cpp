@@ -106,9 +106,9 @@ void Paint::readingData()
             scene->setBackgroundBrush(QBrush(QString(datagram), Qt::SolidPattern));
             backgroundColor = QString(datagram);
         }
-        else if(datagram.contains("recieve"))
+        else if(datagram.contains("recived"))
         {
-            isRecived = true;
+             isRecieved = true;
         }
         else
         {
@@ -124,15 +124,14 @@ void Paint::readingData()
 
             emit signalInfo(transferCoord, setColor, setBrushSize);
         }
-        udpSocket->writeDatagram(QByteArray("recieve"), senderIP, senderPort);
+        udpSocket->writeDatagram(QByteArray("recived"), senderIP, senderPort);
     }
 }
 
 
-void Paint::sendingDate(QString coordinate, QColor brushColor, qint32 brushSize, bool isRecived)
+void Paint::sendingDate(QString coordinate, QColor brushColor, qint32 brushSize)
 {
-    qDebug() << !isRecived;
-    while(!isRecived)
+    if(!isRecieved)
     {
         QByteArray sendData;
         QString s = brushColor.name() + "|" + QString::number(brushSize) + "|" + coordinate;

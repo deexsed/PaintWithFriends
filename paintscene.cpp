@@ -130,13 +130,13 @@ void PaintScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
         if(sendButtonPress != 0 && transferData.isEmpty())
         {
-            paint.sendingDate(sendButtonPress, changedColor, changedBrush, false);
+            paint.sendingDate(sendButtonPress, changedColor, changedBrush);
             sendButtonPress.clear();
         }
 
         if(transferData > 0)
         {
-            paint.sendingDate(transferData, changedColor, changedBrush, false);
+            paint.sendingDate(transferData, changedColor, changedBrush);
             transferData.clear();
         }
     }

@@ -87,7 +87,7 @@ $(DESTDIR_TARGET): ui_paint.h $(OBJECTS)
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
 
 qmake: FORCE
-	@$(QMAKE) -spec win32-g++ -o Makefile.Release paintOnline.pro
+	@$(QMAKE) -spec win32-g++ "CONFIG+=debug" -o Makefile.Release paintOnline.pro
 
 qmake_all: FORCE
 
