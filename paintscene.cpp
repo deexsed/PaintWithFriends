@@ -97,7 +97,7 @@ void PaintScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void PaintScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    qDebug() << event->scenePos();
+//    qDebug() << event->scenePos();
     group_1->hide();
     group_1 = new QGraphicsItemGroup();
     tempscene->addItem(group_1);
@@ -128,15 +128,15 @@ void PaintScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     {
         Paint paint;
 
-        if(sendButtonPress != 0)
+        if(sendButtonPress != 0 && transferData.isEmpty())
         {
-            paint.sendingDate(sendButtonPress, changedColor, changedBrush);
+            paint.sendingDate(sendButtonPress, changedColor, changedBrush, false);
             sendButtonPress.clear();
         }
 
-        if(transferData != 0)
+        if(transferData > 0)
         {
-            paint.sendingDate(transferData, changedColor, changedBrush);
+            paint.sendingDate(transferData, changedColor, changedBrush, false);
             transferData.clear();
         }
     }

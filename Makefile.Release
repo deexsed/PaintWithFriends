@@ -87,7 +87,7 @@ $(DESTDIR_TARGET): ui_paint.h $(OBJECTS)
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
 
 qmake: FORCE
-	@$(QMAKE) -spec win32-g++ "CONFIG+=debug" -o Makefile.Release paintOnline.pro
+	@$(QMAKE) -spec win32-g++ -o Makefile.Release paintOnline.pro
 
 qmake_all: FORCE
 
@@ -239,6 +239,9 @@ release/moc_paint.cpp: ../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QWidge
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qgraphicssceneevent.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtCore/QDebug \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QColorDialog \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qcolordialog.h \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		paint.h
 	F:\Prog\Qt\5.5\mingw492_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IF:/Prog/Qt/5.5/mingw492_32/mkspecs/win32-g++ -IF:/Project/QtProject/PaintWithFriends -IF:/Prog/Qt/5.5/mingw492_32/include -IF:/Prog/Qt/5.5/mingw492_32/include/QtWidgets -IF:/Prog/Qt/5.5/mingw492_32/include/QtGui -IF:/Prog/Qt/5.5/mingw492_32/include/QtANGLE -IF:/Prog/Qt/5.5/mingw492_32/include/QtNetwork -IF:/Prog/Qt/5.5/mingw492_32/include/QtCore paint.h -o release\moc_paint.cpp
 
@@ -508,6 +511,9 @@ release/main.o: main.cpp Paint.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qgraphicssceneevent.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtCore/QDebug \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QColorDialog \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qcolordialog.h \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QApplication \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qapplication.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtCore/qcoreapplication.h \
@@ -643,6 +649,9 @@ release/paint.o: paint.cpp Paint.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qgraphicssceneevent.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtCore/QDebug \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QColorDialog \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qcolordialog.h \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		ui_paint.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtCore/QVariant \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QAction \
@@ -687,9 +696,6 @@ release/paint.o: paint.cpp Paint.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QSlider \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QSpacerItem \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QVBoxLayout \
-		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QColorDialog \
-		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qcolordialog.h \
-		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtGui/QColor \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QAbstractSlider
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\paint.o paint.cpp
@@ -820,6 +826,9 @@ release/paintscene.o: paintscene.cpp paintscene.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtNetwork/qabstractsocket.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtNetwork/qhostaddress.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtNetwork/QHostAddress \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QColorDialog \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qcolordialog.h \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/QGraphicsItemGroup \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qgraphicsitem.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtCore/QThread \

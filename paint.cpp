@@ -14,7 +14,7 @@ Paint::Paint(QWidget *parent) :
     ui->graphicsView->setScene(scene);
     ui->graphicsView->mapToGlobal(QPoint(0, 0));
     udpSocket = new QUdpSocket(this);
-    udpSocket->bind(QHostAddress::Any, 7777);
+    udpSocket->bind(QHostAddress::AnyIPv4, 27888);
 
     colorDialog = new QColorDialog(this);
 
@@ -66,7 +66,7 @@ void Paint::on_backGroundButton_clicked()
 
     QByteArray sendBackground;
     sendBackground.append("background" + backgroundColor.name());
-    udpSocket->writeDatagram(sendBackground, QHostAddress::LocalHost, 7777);
+    udpSocket->writeDatagram(sendBackground, QHostAddress::Broadcast, 27888);
     sendBackground.clear();
     // Тестовый метод очистки (слишком большая ресурсозатрачиваемость)
 //    QSize clearLayer = ui->graphicsView->maximumSize();
@@ -106,6 +106,10 @@ void Paint::readingData()
             scene->setBackgroundBrush(QBrush(QString(datagram), Qt::SolidPattern));
             backgroundColor = QString(datagram);
         }
+        else if(datagram.contains("recieve"))
+        {
+            isRecived = true;
+        }
         else
         {
             QColor setColor = QString(datagram.left(datagram.indexOf("|")));
@@ -120,17 +124,21 @@ void Paint::readingData()
 
             emit signalInfo(transferCoord, setColor, setBrushSize);
         }
+        udpSocket->writeDatagram(QByteArray("recieve"), senderIP, senderPort);
     }
 }
 
 
-void Paint::sendingDate(QString coordinate, QColor brushColor, qint32 brushSize)
+void Paint::sendingDate(QString coordinate, QColor brushColor, qint32 brushSize, isRecived)
 {
-    QByteArray sendData;
-    QString s = brushColor.name() + "|" + QString::number(brushSize) + "|" + coordinate;
-    sendData.append(s);
-    udpSocket->writeDatagram(sendData, QHostAddress::Any, 7777);
-    sendData.clear();
+    while(!isRecived)
+    {
+        QByteArray sendData;
+        QString s = brushColor.name() + "|" + QString::number(brushSize) + "|" + coordinate;
+        sendData.append(s);
+        udpSocket->writeDatagram(sendData, QHostAddress::Broadcast, 27888);
+        sendData.clear();
+    }
 }
 
 
