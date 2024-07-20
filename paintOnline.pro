@@ -21,3 +21,5 @@ HEADERS  += paint.h \
     paintscene.h \
 
 FORMS    += paint.ui
+
+RC_FILE += appIcon.rc

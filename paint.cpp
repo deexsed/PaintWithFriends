@@ -44,7 +44,9 @@ void Paint::on_pushButton_clicked()
     }
     else
     {
-        color = colorDialog->getColor();
+        colorDialog->setCurrentColor(backgroundColor);
+        colorDialog->exec();
+        color = colorDialog->selectedColor();
     }
     emit signalColor(color);
 }
@@ -110,7 +112,6 @@ void Paint::readingData()
         {
             QColor setColor = QString(datagram.left(datagram.indexOf("|")));
             datagram.remove(0, datagram.indexOf("|") + 1);
-            qDebug() << setColor.name();
 
             qint32 setBrushSize = datagram.left(datagram.indexOf("|")).toInt();
             datagram.remove(0, datagram.indexOf("|") + 1);

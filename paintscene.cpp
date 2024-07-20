@@ -122,6 +122,7 @@ void PaintScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     }
 }
 
+// Отправка данных клиентам при отпускании ЛКМ
 void PaintScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton)

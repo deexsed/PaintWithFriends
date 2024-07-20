@@ -50,6 +50,9 @@ public:
         Paint->setMaximumSize(QSize(16777215, 16777215));
         Paint->setBaseSize(QSize(1000, 600));
         Paint->setMouseTracking(true);
+        QIcon icon;
+        icon.addFile(QStringLiteral("images/icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Paint->setWindowIcon(icon);
         horizontalLayout = new QHBoxLayout(Paint);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -79,6 +82,10 @@ public:
         pushButton->setMinimumSize(QSize(0, 100));
         pushButton->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton->setLayoutDirection(Qt::LeftToRight);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral("images/paletteButton.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton->setIcon(icon1);
+        pushButton->setIconSize(QSize(100, 100));
 
         verticalLayout->addWidget(pushButton);
 
@@ -143,8 +150,8 @@ public:
     void retranslateUi(QWidget *Paint)
     {
         Paint->setWindowTitle(QApplication::translate("Paint", "Paint", 0));
-        pushButton->setText(QApplication::translate("Paint", "\320\237\320\260\320\273\320\270\321\202\321\200\320\260", 0));
-        label_2->setText(QApplication::translate("Paint", "\320\240\320\260\321\205\320\274\320\265\321\200 \320\272\320\270\321\201\321\202\320\270 : ", 0));
+        pushButton->setText(QString());
+        label_2->setText(QApplication::translate("Paint", "\320\240\320\260\320\267\320\274\320\265\321\200 \320\272\320\270\321\201\321\202\320\270 : ", 0));
         label->setText(QApplication::translate("Paint", "10", 0));
         backGroundButton->setText(QApplication::translate("Paint", "\320\246\320\262\320\265\321\202 \320\244\320\276\320\275\320\260", 0));
     } // retranslateUi

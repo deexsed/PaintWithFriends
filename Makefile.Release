@@ -17,13 +17,13 @@ CXXFLAGS      = -pipe -fno-keep-inline-dllexport -std=c++11 -O2 -frtti -Wall -We
 INCPATH       = -I. -I..\..\..\Prog\Qt\5.5\mingw492_32\include -I..\..\..\Prog\Qt\5.5\mingw492_32\include\QtWidgets -I..\..\..\Prog\Qt\5.5\mingw492_32\include\QtGui -I..\..\..\Prog\Qt\5.5\mingw492_32\include\QtANGLE -I..\..\..\Prog\Qt\5.5\mingw492_32\include\QtNetwork -I..\..\..\Prog\Qt\5.5\mingw492_32\include\QtCore -Irelease -I. -I..\..\..\Prog\Qt\5.5\mingw492_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        -lmingw32 -LF:/Prog/Qt/5.5/mingw492_32/lib -lqtmain -lshell32 -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core 
+LIBS        =        -lmingw32 -LF:/Prog/Qt/5.5/mingw492_32/lib -lqtmain -lshell32 -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core release\appIcon_res.o 
 QMAKE         = F:\Prog\Qt\5.5\mingw492_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\appIcon_res.o
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -83,11 +83,14 @@ DESTDIR_TARGET = release\paintOnline.exe
 first: all
 all: Makefile.Release  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_paint.h $(OBJECTS) 
+$(DESTDIR_TARGET): ui_paint.h $(OBJECTS) release/appIcon_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
 
+release/appIcon_res.o: appIcon.rc
+	windres -i appIcon.rc -o release\appIcon_res.o --include-dir=. $(DEFINES)
+
 qmake: FORCE
-	@$(QMAKE) -spec win32-g++ "CONFIG+=debug" -o Makefile.Release paintOnline.pro
+	@$(QMAKE) -spec win32-g++ -o Makefile.Release paintOnline.pro
 
 qmake_all: FORCE
 
@@ -96,6 +99,7 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\main.o release\paint.o release\paintscene.o release\moc_paint.o release\moc_paintscene.o
+	-$(DEL_FILE) release\appIcon_res.o
 
 distclean: clean 
 	-$(DEL_FILE) $(DESTDIR_TARGET)
@@ -520,7 +524,8 @@ release/main.o: main.cpp Paint.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtCore/qeventloop.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtWidgets/qdesktopwidget.h \
 		../../../Prog/Qt/5.5/mingw492_32/include/QtGui/qguiapplication.h \
-		../../../Prog/Qt/5.5/mingw492_32/include/QtGui/qinputmethod.h
+		../../../Prog/Qt/5.5/mingw492_32/include/QtGui/qinputmethod.h \
+		../../../Prog/Qt/5.5/mingw492_32/include/QtCore/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o main.cpp
 
 release/paint.o: paint.cpp Paint.h \
